@@ -1,0 +1,76 @@
+.App {
+  text-align: center;
+  display: flex;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App-chat {
+  min-width: 400px;
+  background: linear-gradient(
+      -45deg,
+      #183850 0,
+      #183850 25%,
+      #192c46 50%,
+      #22254c 75%,
+      #22254c 100%
+    )
+    no-repeat;
+}
+
+/**
+  chat
+**/
+.chat-thread {
+  padding: 0 20px 0 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: calc(100vh - 50px);
+}
+
+.chat-bubble {
+  position: relative;
+  background-color: rgba(25, 147, 147, 0.2);
+  padding: 16px 40px 16px 20px;
+  margin: 0 0 20px 0;
+  border-radius: 10px;
+}
+
+.chat-bubble:nth-child(n) {
+  margin-right: auto;
+}
+
+.chat-btn {
+  padding: 5px;
+  margin: 0 0 0 10px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
