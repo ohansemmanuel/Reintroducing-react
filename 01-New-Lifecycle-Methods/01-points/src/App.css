@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  border: 1px solid #282c34;
   flex: 1;
   min-height: 100vh;
   display: flex;
@@ -17,7 +17,10 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+.App-header img {
+  border: 0
 }
 
 .App-link {
@@ -26,7 +29,7 @@
 
 .App-chat {
   min-width: 400px;
-  background: linear-gradient(
+  /* background: linear-gradient(
       -45deg,
       #183850 0,
       #183850 25%,
@@ -34,7 +37,7 @@
       #22254c 75%,
       #22254c 100%
     )
-    no-repeat;
+    no-repeat; */
 }
 
 /**
