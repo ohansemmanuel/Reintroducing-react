@@ -1,10 +1,10 @@
 import React from 'react'
-import formatNumber from 'format-number'
+import FormatAmount from './FormatAmount'
 
 const TotalAmount = ({ totalAmount }) => {
   return (
     <div className='App__amount'>
-      {formatNumber({ prefix: '$' })(totalAmount)}
+      <FormatAmount totalAmount={totalAmount} />
       <p className='App__amount--info'>Total Amount</p>
     </div>
   )
