@@ -12,9 +12,11 @@
   justify-content: center;
 }
 
-.App__username {
+.App__greeting {
   color: #fff;
   font-weight: bold;
+  font-size: 2rem;
+
 }
 .App__userpic {
   border-radius: 50%;
@@ -33,6 +35,8 @@
   border-radius: 11px;
   margin: 1rem 0 5rem 0;
   box-shadow: 0 10px 5px 5px rgba(0, 0, 0, 0.02);
+  animation-duration: 0.75s;
+  animation-name: bounceIn;
 }
 .App__amount:after {
   content: "";
@@ -68,4 +72,50 @@
   font-size: 0.7rem;
   color: #fe8183;
   cursor: pointer;
+}
+
+.App__showBalance {
+  opacity: 0.65;
+}
+
+.App__showBalanceCTA {
+  margin: 1rem 0;
+}
+
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
 }

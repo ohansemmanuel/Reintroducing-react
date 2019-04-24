@@ -6,18 +6,28 @@ import Charity from '../components/Charity'
 import photographer from '../images/girl.png'
 
 import './App.css'
+import ViewAccountBalance from '../components/ViewAccountBalance'
 
 class App extends Component {
   state = {
-    totalAmount: 2500701
+    showBalance: false
+  }
+
+  displayBalance = () => {
+    this.setState({ showBalance: true })
   }
   render () {
     const { loggedInUser } = this.props
+    const { showBalance } = this.state
 
     return (
       <div className='App'>
         <User loggedInUser={loggedInUser} profilePic={photographer} />
-        <TotalAmount totalAmount={loggedInUser.totalAmount} />
+        <ViewAccountBalance
+          showBalance={showBalance}
+          loggedInUser={loggedInUser}
+          displayBalance={this.displayBalance}
+        />
 
         <section>
           <WithdrawButton amount={10000} />
