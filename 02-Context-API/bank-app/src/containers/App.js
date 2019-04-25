@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import User from '../components/User'
-import TotalAmount from '../components/TotalAmount'
 import WithdrawButton from '../components/WithdrawButton'
+import ViewAccountBalance from '../components/ViewAccountBalance'
 import Charity from '../components/Charity'
 import photographer from '../images/girl.png'
 
 import './App.css'
-import ViewAccountBalance from '../components/ViewAccountBalance'
 
 class App extends Component {
   state = {
@@ -17,15 +16,13 @@ class App extends Component {
     this.setState({ showBalance: true })
   }
   render () {
-    const { loggedInUser } = this.props
     const { showBalance } = this.state
 
     return (
       <div className='App'>
-        <User loggedInUser={loggedInUser} profilePic={photographer} />
+        <User profilePic={photographer} />
         <ViewAccountBalance
           showBalance={showBalance}
-          loggedInUser={loggedInUser}
           displayBalance={this.displayBalance}
         />
 

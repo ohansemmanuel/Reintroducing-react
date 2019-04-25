@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react'
 import TotalAmount from './TotalAmount'
+import { UserConsumer } from '../context/UserContext'
 
-const ViewAccountBalance = ({ showBalance, loggedInUser, displayBalance }) => {
+const ViewAccountBalance = ({ showBalance, displayBalance }) => {
   return (
     <Fragment>
       {!showBalance ? (
@@ -14,7 +15,9 @@ const ViewAccountBalance = ({ showBalance, loggedInUser, displayBalance }) => {
           </button>
         </div>
       ) : (
-        <TotalAmount totalAmount={loggedInUser.totalAmount} />
+        <UserConsumer>
+          {({ user }) => <TotalAmount totalAmount={user.totalAmount} />}
+        </UserConsumer>
       )}
     </Fragment>
   )

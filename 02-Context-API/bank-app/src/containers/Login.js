@@ -22,6 +22,7 @@ class Login extends Component {
           name='username'
           value={username}
           onChange={this.handleFormInput}
+          required
         />
 
         <label htmlFor='password'>Password</label>
@@ -31,6 +32,7 @@ class Login extends Component {
           type='password'
           password={password}
           onChange={this.handleFormInput}
+          required
         />
 
         <button type='submit'> Login </button>

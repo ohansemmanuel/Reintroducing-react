@@ -1,29 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import App from './containers/App'
 import Login from './containers/Login'
-import { USER } from './api'
+import UserProvider, { UserConsumer } from './context/UserContext'
 
-class Root extends Component {
-  state = {
-    loggedInUser: null
-  }
-
-  handleLogin = evt => {
-    evt.preventDefault()
-    this.setState({
-      loggedInUser: USER
-    })
-  }
-
-  render () {
-    const { loggedInUser } = this.state
-
-    return loggedInUser ? (
-      <App loggedInUser={loggedInUser} />
-    ) : (
-      <Login handleLogin={this.handleLogin} />
-    )
-  }
-}
-
+const Root = () => (
+  <UserProvider>
+    <UserConsumer>
+      {({ user, handleLogin }) =>
+        user ? <App /> : <Login handleLogin={handleLogin} />
+      }
+    </UserConsumer>
+  </UserProvider>
+)
 export default Root
