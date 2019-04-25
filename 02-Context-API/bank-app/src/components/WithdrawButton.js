@@ -1,11 +1,20 @@
 import React from 'react'
 import formatNumber from 'format-number'
+import { UserConsumer } from '../context/UserContext'
 
 const WithdrawButton = ({ amount }) => {
   return (
-    <button data-amount='10000' className='App__button'>
-      WITHDRAW {formatNumber({ prefix: '$' })(amount)}
-    </button>
+    <UserConsumer>
+      {({ handleWithdrawal }) => (
+        <button
+          data-amount={amount}
+          className='App__button'
+          onClick={handleWithdrawal}
+        >
+          WITHDRAW {formatNumber({ prefix: '$' })(amount)}
+        </button>
+      )}
+    </UserConsumer>
   )
 }
 

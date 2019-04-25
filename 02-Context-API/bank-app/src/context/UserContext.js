@@ -15,13 +15,26 @@ class UserProvider extends Component {
     })
   }
 
+  handleWithdrawal = evt => {
+    const { name, totalAmount } = this.state.loggedInUser
+    const withdrawalAmount = evt.target.dataset.amount
+
+    this.setState({
+      loggedInUser: {
+        name,
+        totalAmount: totalAmount - withdrawalAmount
+      }
+    })
+  }
+
   render () {
     const { loggedInUser } = this.state
     return (
       <Provider
         value={{
           user: loggedInUser,
-          handleLogin: this.handleLogin
+          handleLogin: this.handleLogin,
+          handleWithdrawal: this.handleWithdrawal
         }}
       >
         {this.props.children}
