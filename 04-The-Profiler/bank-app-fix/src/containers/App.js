@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import User from '../components/User'
 import WithdrawButton from '../components/WithdrawButton'
 import ViewAccountBalance from '../components/ViewAccountBalance'
@@ -7,7 +7,7 @@ import photographer from '../images/girl.png'
 
 import './App.css'
 
-class App extends Component {
+class App extends PureComponent {
   state = {
     showBalance: false
   }

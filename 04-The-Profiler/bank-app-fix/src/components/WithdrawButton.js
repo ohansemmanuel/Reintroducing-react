@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import formatNumber from 'format-number'
 import { UserConsumer } from '../context/UserContext'
 
-const WithdrawButton = ({ amount }) => {
+const WithdrawButton = memo(({ amount }) => {
   return (
     <UserConsumer>
       {({ handleWithdrawal }) => (
@@ -16,6 +16,7 @@ const WithdrawButton = ({ amount }) => {
       )}
     </UserConsumer>
   )
-}
+})
 
+WithdrawButton.displayName = 'WithdrawButton'
 export default WithdrawButton

@@ -4,23 +4,28 @@ import { USER } from '../api'
 const { Provider, Consumer } = createContext()
 
 class UserProvider extends Component {
-  state = {
-    loggedInUser: null
+  constructor () {
+    super()
+    this.state = {
+      user: null,
+      handleLogin: this.handleLogin,
+      handleWithdrawal: this.handleWithdrawal
+    }
   }
 
   handleLogin = evt => {
     evt.preventDefault()
     this.setState({
-      loggedInUser: USER
+      user: USER
     })
   }
 
   handleWithdrawal = evt => {
-    const { name, totalAmount } = this.state.loggedInUser
+    const { name, totalAmount } = this.state.user
     const withdrawalAmount = evt.target.dataset.amount
 
     this.setState({
-      loggedInUser: {
+      user: {
         name,
         totalAmount: totalAmount - withdrawalAmount
       }
@@ -28,18 +33,7 @@ class UserProvider extends Component {
   }
 
   render () {
-    const { loggedInUser } = this.state
-    return (
-      <Provider
-        value={{
-          user: loggedInUser,
-          handleLogin: this.handleLogin,
-          handleWithdrawal: this.handleWithdrawal
-        }}
-      >
-        {this.props.children}
-      </Provider>
-    )
+    return <Provider value={this.state}>{this.props.children}</Provider>
   }
 }
 

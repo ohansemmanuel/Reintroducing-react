@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { memo, Fragment } from 'react'
 import TotalAmount from './TotalAmount'
 import { UserConsumer } from '../context/UserContext'
 
-const ViewAccountBalance = ({ showBalance, displayBalance }) => {
+const ViewAccountBalance = memo(({ showBalance, displayBalance }) => {
   return (
     <Fragment>
       {!showBalance ? (
@@ -21,6 +21,7 @@ const ViewAccountBalance = ({ showBalance, displayBalance }) => {
       )}
     </Fragment>
   )
-}
+})
 
+ViewAccountBalance.displayName = 'ViewAccountBalance'
 export default ViewAccountBalance
