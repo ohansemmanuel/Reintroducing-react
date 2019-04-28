@@ -6,7 +6,7 @@ function App () {
   return (
     <div className='App'>
       {/* ==================
-     uncomment the next lines to see initial example
+     uncomment the next lines to see first example
      ================== */}
 
       {/* <Expandable>
@@ -16,7 +16,9 @@ function App () {
       </Expandable> */}
 
       <Expandable>
-        <Expandable.Header>Reintroducing React</Expandable.Header>
+        <Expandable.Header style={{ color: 'red', border: '1px solid teal' }}>
+          Reintroducing React
+        </Expandable.Header>
         <Expandable.Icon />
         <Expandable.Body>
           <img

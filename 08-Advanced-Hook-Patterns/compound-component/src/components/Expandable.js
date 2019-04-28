@@ -34,9 +34,7 @@ const Expandable = ({ children, onExpand, className = '', ...otherProps }) => {
   )
 
   const value = useMemo(() => ({ expanded, toggle }), [expanded, toggle])
-  const combinedClassNames = useMemo(() => ['Expandable', className].join(''), [
-    className
-  ])
+  const combinedClassNames = ['Expandable', className].join('')
 
   return (
     <Provider value={value}>

@@ -1,13 +1,10 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext } from 'react'
 import { ExpandableContext } from './Expandable'
 import './Body.css'
 
 const Body = ({ children, className = '', ...otherProps }) => {
   const { expanded } = useContext(ExpandableContext)
-  const combinedClassNames = useMemo(
-    () => ['Expandable-panel', className].join(''),
-    [className]
-  )
+  const combinedClassNames = ['Expandable-panel', className].join('')
 
   return expanded ? (
     <div className={combinedClassNames} {...otherProps}>

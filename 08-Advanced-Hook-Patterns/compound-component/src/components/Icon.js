@@ -1,14 +1,10 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext } from 'react'
 import { ExpandableContext } from './Expandable'
 import './Icon.css'
 
 const Icon = ({ className = '', ...otherProps }) => {
   const { expanded } = useContext(ExpandableContext)
-
-  const combinedClassNames = useMemo(
-    () => ['Expandable-icon', className].join(''),
-    [className]
-  )
+  const combinedClassNames = ['Expandable-icon', className].join('')
 
   return (
     <span className={combinedClassNames} {...otherProps}>
