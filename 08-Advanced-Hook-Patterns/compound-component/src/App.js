@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import Expandable from './components/Expandable'
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {/* ==================
+     uncomment the next lines to see initial example
+     ================== */}
+
+      {/* <Expandable>
+        <Expandable.Header>React hooks</Expandable.Header>
+        <Expandable.Icon />
+        <Expandable.Body>Hooks are awesome</Expandable.Body>
+      </Expandable> */}
+
+      <Expandable>
+        <Expandable.Header>Reintroducing React</Expandable.Header>
+        <Expandable.Icon />
+        <Expandable.Body>
+          <img
+            src='https://i.imgur.com/qpj4Y7N.png'
+            style={{ width: '250px' }}
+            alt='reintroducing react book cover'
+          />
+          <p style={{ opacity: 0.7 }}>
+            This book is so f*cking amazing! <br />
+            <a
+              href='https://leanpub.com/reintroducing-react'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Go get it now.
+            </a>
+          </p>
+        </Expandable.Body>
+      </Expandable>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
