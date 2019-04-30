@@ -36,6 +36,7 @@ function App () {
   )
 }
 
+// eslint-disable-next-line no-unused-vars
 function WithComponent () {
   const { expanded, toggle } = useExpanded()
   return (

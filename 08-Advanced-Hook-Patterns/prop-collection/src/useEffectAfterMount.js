@@ -7,5 +7,7 @@ export default function useEffectAfterMount (cb, deps) {
       return cb()
     }
     componentJustMounted.current = false
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
 }
