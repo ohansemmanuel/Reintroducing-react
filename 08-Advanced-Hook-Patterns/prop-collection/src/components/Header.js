@@ -1,11 +1,8 @@
-import React, { useContext } from 'react'
-import { ExpandableContext } from './Expandable'
+import React from 'react'
 
 import './Header.css'
 
-const Header = ({ children, className = '', ...otherProps }) => {
-  const { toggle } = useContext(ExpandableContext)
-
+const Header = ({ children, className = '', toggle, ...otherProps }) => {
   // combine our internal className and any other provided by the user
   const combinedClassName = ['Expandable-trigger', className].join('')
 
