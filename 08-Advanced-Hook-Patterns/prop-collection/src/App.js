@@ -8,7 +8,7 @@ import './App.css'
 import './components/Expandable.css'
 
 function WithoutComponents () {
-  const { expanded, toggle } = useExpanded()
+  const { expanded, togglerProps } = useExpanded()
 
   useEffectAfterMount(
     () => {
@@ -19,7 +19,7 @@ function WithoutComponents () {
 
   return (
     <div style={{ marginTop: '3rem' }}>
-      <button onClick={toggle}>Click to view awesomeness...</button>
+      <button {...togglerProps}>Click to view awesomeness...</button>
       {expanded ? <p>{'😎'.repeat(50)}</p> : null}
     </div>
   )
