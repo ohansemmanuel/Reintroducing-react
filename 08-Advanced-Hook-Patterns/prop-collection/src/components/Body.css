@@ -1,0 +1,6 @@
+.Expandable-panel {
+    margin: 0;
+    padding: 1em 1.5em;
+    border: 1px solid hsl(216, 94%, 94%);;
+    min-height: 150px;
+  }
