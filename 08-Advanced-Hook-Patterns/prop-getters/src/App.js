@@ -8,7 +8,7 @@ import './App.css'
 import './components/Expandable.css'
 
 function WithoutComponents () {
-  const { expanded, togglerProps } = useExpanded()
+  const { expanded, getTogglerProps } = useExpanded()
 
   useEffectAfterMount(
     () => {
@@ -17,9 +17,21 @@ function WithoutComponents () {
     [expanded]
   )
 
+  const customClickHandler = () => {
+    console.log('custom click handler!!!!!')
+  }
+
   return (
     <div style={{ marginTop: '3rem' }}>
-      <button {...togglerProps}>Click to view awesomeness...</button>
+      <button
+        {...getTogglerProps({
+          id: 'my-btn-id',
+          'aria-label': 'custom toggler',
+          onClick: customClickHandler
+        })}
+      >
+        Click to view awesomeness...
+      </button>
       {expanded ? <p>{'😎'.repeat(50)}</p> : null}
     </div>
   )
