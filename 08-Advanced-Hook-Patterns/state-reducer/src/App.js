@@ -17,13 +17,23 @@ import './components/Expandable.css'
  */
 
 function App () {
-  const { expanded, toggle, reset, resetDep } = useExpanded(false)
+  const { expanded, toggle, reset, resetDep } = useExpanded(false, appReducer)
+  function appReducer (currentInternalState, actionAndChanges) {
+    if (resetDep) {
+      return
+    }
+    return {
+      ...actionAndChanges.changes,
+      // override internal update
+      expanded: false
+    }
+  }
 
   useEffectAfterMount(
     () => {
-      // perform side effect here 👇 e.g persist user details to database
+      // open secret in new tab 👇
       window.open('https://leanpub.com/reintroducing-react', '_blank')
-      // open secret in new tab ☝
+      // perform side effect here 👉 e.g persist user details to database
     },
     [resetDep]
   )
