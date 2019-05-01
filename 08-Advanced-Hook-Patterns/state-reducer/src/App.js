@@ -6,14 +6,24 @@ import Body from './components/Body'
 
 import './App.css'
 import './components/Expandable.css'
-import { longText as TermsAndConditionText } from './components/utils'
+
+/**
+ * useExpanded consumer builds an App to share a conspiracy.
+ * Goal:
+ * - after the user clicks to see the conspiracy ...
+ * - the reset callback should be invoked
+ * - the user should NOT be able to expand the container any longer
+ * - the secret can only be viewed ONCE!!!
+ */
 
 function App () {
   const { expanded, toggle, reset, resetDep } = useExpanded(false)
 
   useEffectAfterMount(
     () => {
-      console.log('reset was invoked!!!!')
+      // perform side effect here 👇 e.g persist user details to database
+      window.open('https://leanpub.com/reintroducing-react', '_blank')
+      // open secret in new tab ☝
     },
     [resetDep]
   )
@@ -21,11 +31,19 @@ function App () {
   return (
     <section className='App'>
       <div className='Expandable'>
-        <Header toggle={toggle}> Terms and Conditions </Header>
+        <Header toggle={toggle} style={{ border: '1px dotted red' }}>
+          {' '}
+          They've been lying to you{' '}
+        </Header>
         <Icon expanded={expanded} />
-        <Body expanded={expanded}>
-          {TermsAndConditionText}
-          <button onClick={reset}>reset</button>
+        <Body expanded={expanded} style={{ background: 'papayawhip' }}>
+          <p>
+            This is highly sensitive information and can only be viewed ONCE!!!!
+          </p>
+          <p>
+            Click to view the conspiracy <br />
+            <button onClick={reset}> View secret </button>
+          </p>
         </Body>
       </div>
     </section>

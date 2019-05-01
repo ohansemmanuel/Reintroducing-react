@@ -1,5 +1,5 @@
 {
-  "name": "state-initializers",
+  "name": "state-reducer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
