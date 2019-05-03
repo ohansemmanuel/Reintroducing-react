@@ -17,17 +17,42 @@ const internalReducer = (state, action) => {
         ...state,
         expanded: action.payload
       }
+    case useExpanded.types.override:
+      return {
+        ...state,
+        expanded: !state.expanded
+      }
     default:
       throw new Error(`Action type ${action.type} not handled`)
   }
 }
 
-export default function useExpanded (initialExpanded = false) {
+export default function useExpanded (
+  initialExpanded = false,
+  userReducer = (s, a) => a.internalChanges
+) {
   const initialState = { expanded: initialExpanded }
-  const [{ expanded }, setExpanded] = useReducer(internalReducer, initialState)
+  const resolveChangesReducer = (currentInternalState, action) => {
+    const internalChanges = internalReducer(currentInternalState, action)
+    const userChanges = userReducer(currentInternalState, {
+      ...action,
+      internalChanges
+    })
+    return userChanges
+  }
+
+  const [{ expanded }, setExpanded] = useReducer(
+    resolveChangesReducer,
+    initialState
+  )
 
   const toggle = useCallback(
     () => setExpanded({ type: useExpanded.types.toggleExpand }),
+    []
+  )
+
+  const override = useCallback(
+    () => setExpanded({ type: useExpanded.types.override }),
     []
   )
 
@@ -55,9 +80,10 @@ export default function useExpanded (initialExpanded = false) {
       toggle,
       getTogglerProps,
       reset,
-      resetDep: resetRef.current
+      resetDep: resetRef.current,
+      override
     }),
-    [expanded, toggle, getTogglerProps, reset]
+    [expanded, toggle, getTogglerProps, reset, override]
   )
 
   return value
@@ -65,5 +91,6 @@ export default function useExpanded (initialExpanded = false) {
 
 useExpanded.types = {
   toggleExpand: 'EXPAND',
-  reset: 'RESET'
+  reset: 'RESET',
+  override: 'OVERRIDE'
 }

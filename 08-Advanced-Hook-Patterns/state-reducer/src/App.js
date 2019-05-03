@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import useExpanded, { useEffectAfterMount } from './components/Expandable'
 import Header from './components/Header'
 import Icon from './components/Icon'
@@ -17,22 +17,30 @@ import './components/Expandable.css'
  */
 
 function App () {
-  const { expanded, toggle, reset, resetDep } = useExpanded(false, appReducer)
-  function appReducer (currentInternalState, actionAndChanges) {
-    if (resetDep) {
-      return
+  const hasViewedSecret = useRef(false)
+  const { expanded, toggle, override, reset, resetDep } = useExpanded(
+    false,
+    appReducer
+  )
+  function appReducer (currentInternalState, action) {
+    if (
+      hasViewedSecret.current &&
+      action.type === useExpanded.types.toggleExpand
+    ) {
+      return {
+        ...action.internalChanges,
+        // override internal update
+        expanded: false
+      }
     }
-    return {
-      ...actionAndChanges.changes,
-      // override internal update
-      expanded: false
-    }
+    return action.internalChanges
   }
 
   useEffectAfterMount(
     () => {
       // open secret in new tab 👇
       window.open('https://leanpub.com/reintroducing-react', '_blank')
+      hasViewedSecret.current = true
       // perform side effect here 👉 e.g persist user details to database
     },
     [resetDep]
@@ -56,6 +64,9 @@ function App () {
           </p>
         </Body>
       </div>
+      {hasViewedSecret.current && (
+        <button onClick={override}>Be redeemed to view secret again</button>
+      )}
     </section>
   )
 }
