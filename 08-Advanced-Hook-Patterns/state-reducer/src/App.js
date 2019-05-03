@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import useExpanded, { useEffectAfterMount } from './components/Expandable'
 import Header from './components/Header'
 import Icon from './components/Icon'
