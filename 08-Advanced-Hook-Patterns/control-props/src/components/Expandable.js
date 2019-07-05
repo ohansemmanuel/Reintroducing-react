@@ -35,10 +35,10 @@ const Expandable = ({
   const componentJustMounted = useRef(true)
   useEffect(
     () => {
-      if (!componentJustMounted && !isExpandControlled) {
+      if (!componentJustMounted.current && !isExpandControlled) {
         onExpand(expanded)
-        componentJustMounted.current = false
       }
+      componentJustMounted.current = false
     },
     [expanded, onExpand, isExpandControlled]
   )

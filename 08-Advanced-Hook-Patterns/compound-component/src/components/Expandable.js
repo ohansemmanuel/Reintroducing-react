@@ -25,10 +25,10 @@ const Expandable = ({ children, onExpand, className = '', ...otherProps }) => {
   const componentJustMounted = useRef(true)
   useEffect(
     () => {
-      if (!componentJustMounted) {
+      if (!componentJustMounted.current) {
         onExpand(expanded)
-        componentJustMounted.current = false
       }
+      componentJustMounted.current = false
     },
     [expanded]
   )
